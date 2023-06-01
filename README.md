@@ -6,4 +6,5 @@
 - [Code](https://github.com/campcc/ts-learning/issues/2)
 - [Types](https://github.com/campcc/ts-learning/issues/3)
 - [Literal & Enum](https://github.com/campcc/ts-learning/issues/4)
-- [Function & Class](https://github.com/campcc/ts-learning/issues/5)
+- [Function](https://github.com/campcc/ts-learning/issues/5)
+- [Class](https://github.com/campcc/ts-learning/issues/6)
