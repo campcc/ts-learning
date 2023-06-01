@@ -1,6 +1,4 @@
-# Types
-
-Primitive and Object
+# Primitive and Object
 
 ## Vs JavaScript
 
