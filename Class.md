@@ -154,10 +154,80 @@ class Foo implements FooStruct {
 class Foo {}
 
 interface FooStruct {
-  new(): Foo;
+  new (): Foo;
 }
 
 declare const NewableFoo: FooStruct;
 
 let foo = new NewableFoo();
 ```
+
+## SOLID
+
+**S，单一功能原则，一个类应该仅具有一种职责**
+
+**O，开放封闭原则，一个类应该是可扩展但不可修改的**
+
+```ts
+// 以支持通过微信、支付宝登录为例，假设后面又新增了抖音登录、美团登录
+
+enum LoginType {
+  WeChat,
+  TaoBao,
+  TikTok,
+  // ...
+}
+
+// 下面的实现方式就不符合开放封闭原则，我们每次扩展都需要修改类
+class Login {
+  public static handler(type: LoginType) {
+    if (type === LoginType.WeChat) {
+    } else if (type === LoginType.TikTok) {
+    } else if (type === LoginType.TaoBao) {
+    } else {
+      throw new Error("Invalid Login Type!");
+    }
+  }
+}
+
+// 我们应该考虑将登陆逻辑抽离
+abstract class LoginHandler {
+  abstract handler(): void;
+}
+
+class WeChatLoginHandler implements LoginHandler {
+  handler() {}
+}
+
+class TaoBaoLoginHandler implements LoginHandler {
+  handler() {}
+}
+
+class TikTokLoginHandler implements LoginHandler {
+  handler() {}
+}
+
+class Login {
+  public static handlerMap: Record<LoginType, LoginHandler> = {
+    [LoginType.TaoBao]: new TaoBaoLoginHandler(),
+    [LoginType.TikTok]: new TikTokLoginHandler(),
+    [LoginType.WeChat]: new WeChatLoginHandler(),
+  };
+
+  public static handler(type: LoginType) {
+    Login.handlerMap[type].handler();
+  }
+}
+```
+
+**L，里式替换原则，一个派生类可以在程序的任何一处对其基类进行替换**
+
+这意味着子类完全继承了父类的一切，对父类进行了功能地扩展（而非收窄）
+
+**I，接口分离原则，类的实现方应当只需要实现自己需要的那部分接口**
+
+比如微信登录支持指纹识别，支付宝支持指纹识别和人脸识别，这个时候微信登录的实现类应该不需要实现人脸识别方法才对。这也就意味着我们提供的抽象类应当按照功能维度拆分成粒度更小的组成才对
+
+**D，依赖倒置原则**
+
+实现开闭原则的基础，核心思想是**对功能的实现应该依赖于抽象层**，即不同的逻辑通过实现不同的抽象类
