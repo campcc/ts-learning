@@ -10,3 +10,8 @@
 - [Class](https://github.com/campcc/ts-learning/issues/6)
 - [Any & Unknown & Never](https://github.com/campcc/ts-learning/issues/7)
 - [Type](https://github.com/campcc/ts-learning/issues/8)
+- [Typeof](https://github.com/campcc/ts-learning/issues/9)
+- [Structural Type System](https://github.com/campcc/ts-learning/issues/10)
+- [Types Levels](https://github.com/campcc/ts-learning/issues/11)
+- [Generic Types](https://github.com/campcc/ts-learning/issues/12)
+- [Tool Types](https://github.com/campcc/ts-learning/issues/13)
