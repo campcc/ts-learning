@@ -14,3 +14,4 @@
 - [Structural Type System](https://github.com/campcc/ts-learning/issues/10)
 - [Types Levels](https://github.com/campcc/ts-learning/issues/11)
 - [Generic Types](https://github.com/campcc/ts-learning/issues/12)
+- [Tool Types](https://github.com/campcc/ts-learning/issues/13)
